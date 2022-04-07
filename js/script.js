@@ -1,3 +1,4 @@
+// variabili globabli prima parte
 let container = document.querySelector('.team-container')
 const team = [
     {
@@ -31,7 +32,7 @@ const team = [
         lavoro: 'Graphic Designer'
     }
 ]
-
+// ciclo per la creazione delle card
 for(let i=0; i<team.length; i++){
     let card = document.createElement('div')
     card.setAttribute('class', 'team-card')
