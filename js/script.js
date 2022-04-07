@@ -32,24 +32,45 @@ const team = [
         lavoro: 'Graphic Designer'
     }
 ]
+
 // ciclo per la creazione delle card
-for(let i=0; i<team.length; i++){
-    let card = document.createElement('div')
-    card.setAttribute('class', 'team-card')
-    container.append(card)
-    let image = document.createElement('div')
-    image.setAttribute('class', 'card-image')
-    image.innerHTML = `
-        <img
-        src="img/${team[i].img}.jpg"
-        alt="${team[i].nome}"/>
-    `
-    card.append(image)
-    let text = document.createElement('div')
-    text.setAttribute('class', 'card-text')
-    text.innerHTML = `
-        <h3>${team[i].nome}</h3>
-        <p>${team[i].lavoro}</p>
-    `
-    card.append(text)
+function crea(){
+    container.innerHTML = ''
+    for(let i=0; i<team.length; i++){
+        let card = document.createElement('div')
+        card.setAttribute('class', 'team-card')
+        container.append(card)
+        let image = document.createElement('div')
+        image.setAttribute('class', 'card-image')
+        image.innerHTML = `
+            <img
+            src="img/${team[i].img}.jpg"
+            alt="${team[i].nome}"/>
+        `
+        card.append(image)
+        let text = document.createElement('div')
+        text.setAttribute('class', 'card-text')
+        text.innerHTML = `
+            <h3>${team[i].nome}</h3>
+            <p>${team[i].lavoro}</p>
+        `
+        card.append(text)
+    }
 }
+crea()
+
+// seconda parte
+// variabili globali
+let imageValue = document.getElementById('image')
+let nameValue = document.getElementById('name')
+let roleValue = document.getElementById('role')
+// effetti sul bottone
+document.getElementById('addMemberButton').addEventListener('click', () =>{
+    let nuova = {
+        img: imageValue.value,
+        nome: nameValue.value,
+        lavoro: roleValue.value
+    }
+    team.push(nuova)
+    crea()
+})
